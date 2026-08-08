@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block title %}
+Add Hospital
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="card shadow-lg">
+
+        <div class="card-header bg-success text-white">
+
+            <h3>🏥 Add New Hospital</h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <form method="POST">
+
+                <div class="mb-3">
+                    <label class="form-label">Hospital Name</label>
+                    <input
+                        type="text"
+                        name="hospital_name"
+                        class="form-control"
+                        required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Hospital Type</label>
+
+                    <select
+                        name="hospital_type"
+                        class="form-control"
+                        required>
+
+                        <option value="">-- Select Type --</option>
+
+                        <option>National Referral Hospital</option>
+
+                        <option>Regional Referral Hospital</option>
+
+                        <option>District Hospital</option>
+
+                        <option>Primary Health Center</option>
+
+                        <option>Private Hospital</option>
+
+                    </select>
+
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">District</label>
+
+                    <input
+                        type="text"
+                        name="district"
+                        class="form-control"
+                        required>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label">Address</label>
+
+                    <textarea
+                        name="address"
+                        class="form-control"
+                        rows="3"
+                        required></textarea>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label">Phone Number</label>
+
+                    <input
+                        type="text"
+                        name="phone"
+                        class="form-control">
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label">Email Address</label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        class="form-control">
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="btn btn-success">
+
+                    💾 Save Hospital
+
+                </button>
+
+                <a
+                    href="/admin/hospitals"
+                    class="btn btn-secondary">
+
+                    Cancel
+
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

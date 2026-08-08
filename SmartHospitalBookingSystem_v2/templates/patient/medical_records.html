@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}
+Medical Records
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+<div class="card shadow-lg">
+
+<div class="card-header bg-success text-white">
+
+<h2>🩺 Medical Records</h2>
+
+</div>
+
+<div class="card-body">
+
+{% if records %}
+
+<table class="table table-bordered table-hover">
+
+<thead class="table-dark">
+
+<tr>
+<th>Date</th>
+<th>Doctor</th>
+<th>Hospital</th>
+<th>Action</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for r in records %}
+
+<tr>
+
+<td>{{ r[1] }}</td>
+<td>{{ r[2] }}</td>
+<td>{{ r[3] }}</td>
+
+<td>
+<a href="/patient/record/{{ r[0] }}"
+class="btn btn-primary btn-sm">
+
+View Record
+
+</a>
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+{% else %}
+
+<div class="alert alert-info">
+
+No Medical Records Found.
+
+</div>
+
+{% endif %}
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %}
+Patient Details
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+<div class="card shadow-lg">
+
+<div class="card-header bg-primary text-white">
+
+<h2>👤 Patient Details</h2>
+
+</div>
+
+<div class="card-body">
+
+<table class="table table-bordered">
+
+<tr>
+<th>Patient ID</th>
+<td>{{ patient[0] }}</td>
+</tr>
+
+<tr>
+<th>Full Name</th>
+<td>{{ patient[1] }}</td>
+</tr>
+
+<tr>
+<th>CID Number</th>
+<td>{{ patient[8] }}</td>
+</tr>
+
+<tr>
+<th>Gender</th>
+<td>{{ patient[2] }}</td>
+</tr>
+
+<tr>
+<th>Date of Birth</th>
+<td>{{ patient[3] }}</td>
+</tr>
+
+<tr>
+<th>Blood Group</th>
+<td>{{ patient[9] }}</td>
+</tr>
+
+<tr>
+<th>Nationality</th>
+<td>{{ patient[10] }}</td>
+</tr>
+
+<tr>
+<th>Phone</th>
+<td>{{ patient[4] }}</td>
+</tr>
+
+<tr>
+<th>Email</th>
+<td>{{ patient[5] }}</td>
+</tr>
+
+<tr>
+<th>Dzongkhag</th>
+<td>{{ patient[11] }}</td>
+</tr>
+
+<tr>
+<th>Gewog</th>
+<td>{{ patient[12] }}</td>
+</tr>
+
+<tr>
+<th>Village</th>
+<td>{{ patient[13] }}</td>
+</tr>
+
+<tr>
+<th>Address</th>
+<td>{{ patient[6] }}</td>
+</tr>
+
+<tr>
+<th>Registered On</th>
+<td>{{ patient[7] }}</td>
+</tr>
+
+</table>
+
+<a href="/admin/patients" class="btn btn-secondary">
+← Back
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

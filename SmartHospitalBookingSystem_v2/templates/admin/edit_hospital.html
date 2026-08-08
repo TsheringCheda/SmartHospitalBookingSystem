@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Hospital
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+<div class="card shadow-lg">
+
+<div class="card-header bg-primary text-white">
+
+<h3>✏️ Edit Hospital</h3>
+
+</div>
+
+<div class="card-body">
+
+<form method="POST">
+
+<label>Hospital Name</label>
+
+<input
+type="text"
+name="hospital_name"
+value="{{ hospital[1] }}"
+class="form-control mb-3"
+required>
+
+<label>Hospital Type</label>
+
+<input
+type="text"
+name="hospital_type"
+value="{{ hospital[2] }}"
+class="form-control mb-3">
+
+<label>District</label>
+
+<input
+type="text"
+name="district"
+value="{{ hospital[3] }}"
+class="form-control mb-3">
+
+<label>Address</label>
+
+<textarea
+name="address"
+class="form-control mb-3">{{ hospital[4] }}</textarea>
+
+<label>Phone</label>
+
+<input
+type="text"
+name="phone"
+value="{{ hospital[5] }}"
+class="form-control mb-3">
+
+<label>Email</label>
+
+<input
+type="email"
+name="email"
+value="{{ hospital[6] }}"
+class="form-control mb-3">
+
+<label>Status</label>
+
+<select
+name="status"
+class="form-control mb-4">
+
+<option value="Active"
+{% if hospital[7]=="Active" %}selected{% endif %}>
+Active
+</option>
+
+<option value="Inactive"
+{% if hospital[7]=="Inactive" %}selected{% endif %}>
+Inactive
+</option>
+
+</select>
+
+<button class="btn btn-primary">
+
+💾 Update Hospital
+
+</button>
+
+<a href="/admin/hospitals"
+class="btn btn-secondary">
+
+Cancel
+
+</a>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

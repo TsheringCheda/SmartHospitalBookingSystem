@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}
+Medical Record
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+<div class="card shadow">
+
+<div class="card-header bg-success text-white">
+
+<h2>Medical Record</h2>
+
+</div>
+
+<div class="card-body">
+
+<p><b>Date:</b> {{ record[0] }}</p>
+
+<p><b>Doctor:</b> {{ record[1] }}</p>
+
+<p><b>Hospital:</b> {{ record[2] }}</p>
+
+<hr>
+
+<h4>Diagnosis</h4>
+
+<p>{{ record[3] }}</p>
+
+<hr>
+
+<h4>Prescription</h4>
+
+<p>{{ record[4] }}</p>
+
+<hr>
+
+<h4>Doctor Notes</h4>
+
+<p>{{ record[5] }}</p>
+
+<a href="/patient/medical_records" class="btn btn-secondary">
+
+Back
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

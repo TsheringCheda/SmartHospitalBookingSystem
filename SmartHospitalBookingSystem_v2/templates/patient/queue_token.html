@@ -1,0 +1,481 @@
+{% extends "base.html" %}
+
+{% block title %}
+Digital Queue Token
+{% endblock %}
+
+{% block content %}
+
+<section class="py-5">
+
+<div class="container">
+
+{% if token %}
+
+<!-- Hero Banner -->
+
+<div class="card border-0 shadow-lg rounded-4 overflow-hidden mb-5">
+
+<div class="card-body text-white p-5"
+
+style="background: linear-gradient(135deg,#0d6efd,#0a58ca);">
+
+<div class="row align-items-center">
+
+<div class="col-lg-8">
+
+<h1 class="fw-bold display-5">
+
+Digital Queue Token
+
+</h1>
+
+<p class="lead mb-0">
+
+Please keep this token ready when your queue number is called.
+
+</p>
+
+</div>
+
+<div class="col-lg-4 text-center d-none d-lg-block">
+
+<i class="bi bi-qr-code-scan"
+
+style="font-size:90px;"></i>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="row justify-content-center">
+
+<div class="col-lg-9">
+
+<div class="card border-0 shadow-lg rounded-4">
+
+<div class="card-body p-5">
+
+<!-- Current Serving -->
+
+<div class="text-center mb-5">
+
+<h5 class="text-muted fw-semibold">
+
+NOW SERVING
+
+</h5>
+
+<h1 class="display-2 fw-bold text-primary">
+
+A{{ "%03d"|format(queue_position-1 if queue_position>1 else queue_position) }}
+
+</h1>
+
+</div>
+
+<hr class="mb-5">
+
+<!-- Patient Token -->
+
+<div class="text-center">
+
+<h5 class="text-muted fw-semibold">
+
+YOUR TOKEN NUMBER
+
+</h5>
+
+<h1
+
+class="display-1 fw-bold text-danger">
+
+A{{ "%03d"|format(token[0]) }}
+
+</h1>
+
+</div>
+
+<hr class="my-5">
+
+<!-- Patient Information -->
+
+<div class="row text-center g-4 mb-5">
+
+    <div class="col-md-6">
+
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+
+            <div class="card-body">
+
+                <i class="bi bi-person-circle text-primary fs-1"></i>
+
+                <h6 class="text-muted mt-3">
+
+                    Doctor
+
+                </h6>
+
+                <h4 class="fw-bold">
+
+                    {{ token[3] }}
+
+                </h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+
+            <div class="card-body">
+
+                <i class="bi bi-building text-success fs-1"></i>
+
+                <h6 class="text-muted mt-3">
+
+                    Department
+
+                </h6>
+
+                <h4 class="fw-bold">
+
+                    {{ token[2] }}
+
+                </h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row text-center g-4 mb-5">
+
+    <div class="col-md-6">
+
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+
+            <div class="card-body">
+
+                <i class="bi bi-hospital text-danger fs-1"></i>
+
+                <h6 class="text-muted mt-3">
+
+                    Hospital
+
+                </h6>
+
+                <h4 class="fw-bold">
+
+                    {{ token[1] }}
+
+                </h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+
+            <div class="card-body">
+
+                <i class="bi bi-calendar-event text-warning fs-1"></i>
+
+                <h6 class="text-muted mt-3">
+
+                    Appointment Date
+
+                </h6>
+
+                <h4 class="fw-bold">
+
+                    {{ token[5] }}
+
+                </h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Queue Statistics -->
+
+<div class="row g-4 mb-5">
+
+    <div class="col-md-4">
+
+        <div class="card border-0 bg-primary text-white rounded-4 shadow">
+
+            <div class="card-body text-center">
+
+                <i class="bi bi-list-ol fs-1"></i>
+
+                <h6 class="mt-3">
+
+                    Queue Position
+
+                </h6>
+
+                <h1 class="fw-bold">
+
+                    {{ queue_position }}
+
+                </h1>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card border-0 bg-warning rounded-4 shadow">
+
+            <div class="card-body text-center">
+
+                <i class="bi bi-people-fill fs-1"></i>
+
+                <h6 class="mt-3">
+
+                    Patients Ahead
+
+                </h6>
+
+                <h1 class="fw-bold">
+
+                    {{ queue_position-1 }}
+
+                </h1>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card border-0 bg-info text-white rounded-4 shadow">
+
+            <div class="card-body text-center">
+
+                <i class="bi bi-clock-history fs-1"></i>
+
+                <h6 class="mt-3">
+
+                    Waiting Time
+
+                </h6>
+
+                <h2 class="fw-bold">
+
+                    {{ waiting_time }} mins
+
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<hr class="my-5">
+
+<!-- Appointment Information -->
+
+<div class="row text-center g-4 mb-5">
+
+    <div class="col-md-6">
+
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+
+            <div class="card-body">
+
+                <i class="bi bi-clock-fill text-primary fs-1"></i>
+
+                <h6 class="text-muted mt-3">
+
+                    Appointment Time
+
+                </h6>
+
+                <h3 class="fw-bold">
+
+                    {{ token[6] }}
+
+                </h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+
+            <div class="card-body">
+
+                <i class="bi bi-check-circle-fill text-success fs-1"></i>
+
+                <h6 class="text-muted mt-3">
+
+                    Status
+
+                </h6>
+
+                <span class="badge bg-success fs-5 px-4 py-2 rounded-pill">
+
+                    {{ token[7] }}
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<hr class="my-5">
+
+<!-- QR Code -->
+
+<div class="text-center mb-5">
+
+    <h4 class="fw-bold mb-4">
+
+        Scan QR Code at Reception
+
+    </h4>
+
+    {% if token %}
+
+    <div class="card border-0 shadow-sm rounded-4 d-inline-block p-4">
+
+        <img
+            src="{{ url_for('static', filename='qr_codes/appointment_' ~ token[0] ~ '.png') }}"
+            width="220"
+            class="img-fluid"
+            alt="QR Code">
+
+    </div>
+
+    {% else %}
+
+    <div class="alert alert-warning">
+
+        QR Code Not Available
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+<!-- Buttons -->
+
+<div class="d-flex justify-content-center gap-3 flex-wrap">
+
+    <button
+        onclick="window.print()"
+        class="btn btn-primary btn-lg rounded-pill px-5">
+
+        <i class="bi bi-printer-fill me-2"></i>
+
+        Print Token
+
+    </button>
+
+    <a
+        href="/patient/dashboard"
+        class="btn btn-outline-secondary btn-lg rounded-pill px-5">
+
+        <i class="bi bi-house-fill me-2"></i>
+
+        Dashboard
+
+    </a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% else %}
+
+<div class="row justify-content-center">
+
+<div class="col-lg-8">
+
+<div class="card border-0 shadow-lg rounded-4">
+
+<div class="card-body text-center p-5">
+
+<i class="bi bi-calendar-x display-1 text-warning"></i>
+
+<h2 class="fw-bold mt-4">
+
+No Appointment Found
+
+</h2>
+
+<p class="text-muted">
+
+You have not booked any appointment yet.
+
+</p>
+
+<a
+    href="/patient/book"
+    class="btn btn-primary btn-lg rounded-pill mt-3">
+
+    <i class="bi bi-calendar-plus-fill me-2"></i>
+
+    Book Appointment
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endif %}
+
+</div>
+
+</section>
+
+{% endblock %}

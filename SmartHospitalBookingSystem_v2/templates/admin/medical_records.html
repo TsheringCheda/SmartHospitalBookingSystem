@@ -1,0 +1,238 @@
+{% extends "base.html" %}
+
+{% block title %}
+Medical Records
+{% endblock %}
+
+{% block content %}
+
+<section class="py-5">
+
+<div class="container-fluid">
+
+<!-- Hero Banner -->
+
+<div class="card border-0 shadow-lg rounded-4 overflow-hidden mb-5">
+
+<div class="card-body text-white p-5"
+style="background:linear-gradient(135deg,#6f42c1,#0d6efd);">
+
+<div class="row align-items-center">
+
+<div class="col-lg-8">
+
+<h1 class="display-5 fw-bold">
+
+📄 Medical Records
+
+</h1>
+
+<p class="lead mb-0">
+
+View and manage all patient medical records.
+
+</p>
+
+</div>
+
+<div class="col-lg-4 text-end d-none d-lg-block">
+
+<i class="bi bi-file-earmark-medical-fill"
+style="font-size:90px;"></i>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Search -->
+
+<div class="card border-0 shadow-lg rounded-4 mb-4">
+
+<div class="card-body">
+
+<form method="GET">
+
+<div class="input-group">
+
+<span class="input-group-text">
+
+<i class="bi bi-search"></i>
+
+</span>
+
+<input
+type="text"
+class="form-control"
+name="search"
+placeholder="Search Patient / Doctor / Diagnosis..."
+value="{{ search }}">
+
+<button class="btn btn-primary">
+
+Search
+
+</button>
+
+<a href="/admin/medical_records"
+class="btn btn-secondary">
+
+Reset
+
+</a>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+<!-- Records Table -->
+
+<div class="card border-0 shadow-lg rounded-4">
+
+<div class="card-header bg-primary text-white">
+
+<h4 class="mb-0">
+
+<i class="bi bi-file-medical-fill me-2"></i>
+
+Medical Records
+
+</h4>
+
+</div>
+
+<div class="card-body">
+
+<div class="table-responsive">
+
+<table class="table table-hover align-middle">
+
+<thead class="table-dark">
+
+<tr>
+
+<th>ID</th>
+
+<th>Patient</th>
+
+<th>Doctor</th>
+
+<th>Diagnosis</th>
+
+<th>Prescription</th>
+
+<th>Created</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% if records %}
+
+{% for r in records %}
+
+<tr>
+
+<td>{{ r[0] }}</td>
+
+<td class="fw-semibold">
+
+{{ r[1] }}
+
+</td>
+
+<td>
+
+{{ r[2] }}
+
+</td>
+
+<td>
+
+<span class="badge bg-info">
+
+{{ r[3] }}
+
+</span>
+
+</td>
+
+<td>
+
+{{ r[4] }}
+
+</td>
+
+<td>
+
+{{ r[5] }}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+{% else %}
+
+<tr>
+
+<td colspan="6" class="text-center py-5">
+
+<h5 class="text-danger">
+
+No Medical Records Found
+
+</h5>
+
+</td>
+
+</tr>
+
+{% endif %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<style>
+
+.card{
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 1rem 2rem rgba(0,0,0,.15)!important;
+}
+
+.table tbody tr{
+transition:.25s;
+}
+
+.table tbody tr:hover{
+background:#f8f9fa;
+}
+
+</style>
+
+{% endblock %}

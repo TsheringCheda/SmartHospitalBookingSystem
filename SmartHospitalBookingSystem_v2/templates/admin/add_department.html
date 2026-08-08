@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}
+Add Department
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+<div class="card shadow-lg">
+
+<div class="card-header bg-success text-white">
+
+<h2>➕ Add Department</h2>
+
+</div>
+
+<div class="card-body">
+
+<form method="POST">
+
+<!-- Hospital -->
+
+<div class="mb-3">
+
+<label class="form-label">
+Hospital
+</label>
+
+<select
+class="form-select"
+name="hospital_id"
+required>
+
+<option value="">
+-- Select Hospital --
+</option>
+
+{% for h in hospitals %}
+
+<option value="{{ h[0] }}">
+{{ h[1] }}
+</option>
+
+{% endfor %}
+
+</select>
+
+</div>
+
+<!-- Department -->
+
+<div class="mb-3">
+
+<label class="form-label">
+Department Name
+</label>
+
+<input
+type="text"
+class="form-control"
+name="department_name"
+required>
+
+</div>
+
+<!-- Description -->
+
+<div class="mb-3">
+
+<label class="form-label">
+Description
+</label>
+
+<textarea
+class="form-control"
+rows="4"
+name="description"></textarea>
+
+</div>
+
+<button class="btn btn-success">
+
+Save Department
+
+</button>
+
+<a href="/admin/departments"
+class="btn btn-secondary">
+
+Cancel
+
+</a>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

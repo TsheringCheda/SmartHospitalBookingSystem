@@ -1,0 +1,194 @@
+{% extends "base.html" %}
+
+{% block title %}
+Appointment Slip
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="card shadow-lg border-0">
+
+        <div class="card-header bg-success text-white text-center">
+
+            <h2>🏥 eHealth Bhutan</h2>
+
+            <h5>Appointment Slip</h5>
+
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-bordered">
+
+<tr>
+    <th width="30%">Appointment ID</th>
+    <td>#{{ appointment[0] }}</td>
+</tr>
+
+<tr>
+    <th>Patient Name</th>
+    <td>{{ appointment[1] }}</td>
+</tr>
+
+<tr>
+    <th>Gender</th>
+    <td>{{ appointment[2] }}</td>
+</tr>
+
+<tr>
+    <th>Date of Birth</th>
+    <td>{{ appointment[3] }}</td>
+</tr>
+
+<tr>
+    <th>CID Number</th>
+    <td>{{ appointment[4] }}</td>
+</tr>
+
+<tr>
+    <th>Phone</th>
+    <td>{{ appointment[5] }}</td>
+</tr>
+
+<tr>
+    <th>Email</th>
+    <td>{{ appointment[6] }}</td>
+</tr>
+
+<tr>
+    <th>Blood Group</th>
+    <td>{{ appointment[7] }}</td>
+</tr>
+
+<tr>
+    <th>Nationality</th>
+    <td>{{ appointment[8] }}</td>
+</tr>
+
+<tr>
+    <th>Address</th>
+    <td>{{ appointment[9] }}</td>
+</tr>
+
+<tr>
+    <th>Hospital</th>
+    <td>{{ appointment[10] }}</td>
+</tr>
+
+<tr>
+    <th>Department</th>
+    <td>{{ appointment[11] }}</td>
+</tr>
+
+<tr>
+    <th>Doctor</th>
+    <td>{{ appointment[12] }}</td>
+</tr>
+
+<tr>
+    <th>Specialization</th>
+    <td>{{ appointment[13] }}</td>
+</tr>
+
+<tr>
+    <th>Appointment Date</th>
+    <td>{{ appointment[14] }}</td>
+</tr>
+
+<tr>
+    <th>Appointment Time</th>
+    <td>{{ appointment[15] }}</td>
+</tr>
+
+<tr>
+    <th>Appointment Type</th>
+    <td>{{ appointment[16] }}</td>
+</tr>
+
+<tr>
+    <th>Status</th>
+    <td>
+        {% if appointment[17] == "Booked" %}
+            <span class="badge bg-success">Booked</span>
+
+        {% elif appointment[17] == "Confirmed" %}
+            <span class="badge bg-primary">Confirmed</span>
+
+        {% elif appointment[17] == "Completed" %}
+            <span class="badge bg-info">Completed</span>
+
+        {% elif appointment[17] == "Cancelled" %}
+            <span class="badge bg-danger">Cancelled</span>
+
+        {% elif appointment[17] == "No Show" %}
+            <span class="badge bg-dark">No Show</span>
+
+        {% else %}
+            <span class="badge bg-warning text-dark">
+                {{ appointment[17] }}
+            </span>
+        {% endif %}
+    </td>
+</tr>
+
+<tr>
+    <th>Remarks</th>
+    <td>{{ appointment[18] or "N/A" }}</td>
+</tr>
+
+</table>
+
+<div class="text-center mt-4">
+
+    <img
+        src="{{ url_for('static', filename=qr_image) }}"
+        width="220"
+        class="img-thumbnail">
+
+    <br><br>
+
+    <h5>📱 Scan at Reception</h5>
+
+</div>
+
+            <div class="text-center mt-4">
+
+                <button
+                    class="btn btn-success"
+                    onclick="window.print()">
+
+                    🖨 Print Slip
+
+                </button>
+
+                <a
+                    href="/patient/my_appointments"
+                    class="btn btn-secondary">
+
+                    Back
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+<div class="text-center mt-4">
+
+    <img
+        src="{{ url_for('static', filename=qr_image) }}"
+        width="220"
+        class="img-thumbnail">
+
+    <br><br>
+
+    <h5>Scan at Reception</h5>
+
+</div>

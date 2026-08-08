@@ -1,0 +1,239 @@
+{% extends "base.html" %}
+
+{% block title %}
+Medical Records
+{% endblock %}
+
+{% block content %}
+
+<section class="py-5">
+
+<div class="container">
+
+<!-- Hero Banner -->
+
+<div class="card border-0 shadow-lg rounded-4 overflow-hidden mb-5">
+
+<div class="card-body text-white p-5"
+style="background:linear-gradient(135deg,#0d6efd,#084298);">
+
+<div class="row align-items-center">
+
+<div class="col-lg-8">
+
+<h1 class="display-5 fw-bold">
+
+Medical Records
+
+</h1>
+
+<p class="lead mb-0">
+
+Access and manage patient medical histories.
+
+</p>
+
+</div>
+
+<div class="col-lg-4 text-center d-none d-lg-block">
+
+<i class="bi bi-file-earmark-medical-fill"
+style="font-size:90px;"></i>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Search -->
+
+<div class="card border-0 shadow rounded-4 mb-4">
+
+<div class="card-body">
+
+<div class="input-group">
+
+<span class="input-group-text">
+
+<i class="bi bi-search"></i>
+
+</span>
+
+<input
+type="text"
+id="recordSearch"
+class="form-control"
+placeholder="Search medical records...">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card border-0 shadow-lg rounded-4">
+
+<div class="card-body">
+
+{% if records %}
+
+<div class="table-responsive">
+
+<table class="table table-hover align-middle" id="recordTable">
+
+<thead class="table-primary">
+
+<tr>
+
+<th>ID</th>
+<th>Patient</th>
+<th>Hospital</th>
+<th>Date</th>
+<th>Diagnosis</th>
+<th>Created</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for r in records %}
+
+<tr>
+
+<td class="fw-bold">
+
+{{ r[0] }}
+
+</td>
+
+<td>
+
+<i class="bi bi-person-circle text-primary me-2"></i>
+
+<strong>{{ r[1] }}</strong>
+
+</td>
+
+<td>
+
+<span class="badge bg-success">
+
+{{ r[2] }}
+
+</span>
+
+</td>
+
+<td>{{ r[3] }}</td>
+
+<td>
+
+<span class="text-dark">
+
+{{ r[4] }}
+
+</span>
+
+</td>
+
+<td>{{ r[5] }}</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% else %}
+
+<div class="alert alert-info text-center rounded-4">
+
+<h4>
+
+<i class="bi bi-info-circle-fill me-2"></i>
+
+No Medical Records Found
+
+</h4>
+
+<p class="mb-0">
+
+There are currently no patient medical records available.
+
+</p>
+
+</div>
+
+{% endif %}
+
+<div class="mt-4">
+
+<a
+href="/doctor/dashboard"
+class="btn btn-secondary rounded-pill px-4">
+
+<i class="bi bi-arrow-left me-2"></i>
+
+Back Dashboard
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+document.getElementById("recordSearch")
+.addEventListener("keyup", function(){
+
+let value = this.value.toLowerCase();
+
+let rows =
+document.querySelectorAll("#recordTable tbody tr");
+
+rows.forEach(function(row){
+
+let text = row.innerText.toLowerCase();
+
+row.style.display =
+text.includes(value) ? "" : "none";
+
+});
+
+});
+
+</script>
+
+<style>
+
+.table tbody tr{
+
+transition:.25s;
+
+}
+
+.table tbody tr:hover{
+
+background:#f8f9fa;
+
+transform:scale(1.01);
+
+}
+
+</style>
+
+{% endblock %}

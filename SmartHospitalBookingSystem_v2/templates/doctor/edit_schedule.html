@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Schedule
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+<div class="card shadow-lg">
+
+<div class="card-header bg-warning">
+
+<h2>Edit Schedule</h2>
+
+</div>
+
+<div class="card-body">
+
+<form method="POST">
+
+<label>Date</label>
+
+<input type="date"
+name="available_date"
+class="form-control mb-3"
+value="{{ schedule[1] }}"
+required>
+
+<label>Start Time</label>
+
+<input type="time"
+name="start_time"
+class="form-control mb-3"
+value="{{ schedule[2] }}"
+required>
+
+<label>End Time</label>
+
+<input type="time"
+name="end_time"
+class="form-control mb-3"
+value="{{ schedule[3] }}"
+required>
+
+<label>Appointment Type</label>
+
+<select name="appointment_type"
+class="form-control mb-3">
+
+<option {% if schedule[4]=="Consultation" %}selected{% endif %}>
+Consultation
+</option>
+
+<option {% if schedule[4]=="Follow-up" %}selected{% endif %}>
+Follow-up
+</option>
+
+<option {% if schedule[4]=="Emergency" %}selected{% endif %}>
+Emergency
+</option>
+
+</select>
+
+<label>Available Tokens</label>
+
+<input type="number"
+name="available_tokens"
+class="form-control mb-4"
+value="{{ schedule[5] }}"
+required>
+
+<button class="btn btn-success">
+
+Update Schedule
+
+</button>
+
+<a href="/doctor/schedule"
+class="btn btn-secondary">
+
+Cancel
+
+</a>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

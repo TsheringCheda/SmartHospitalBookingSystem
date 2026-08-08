@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block title %}
+Reports
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">
+        📊 System Reports
+    </h2>
+
+    <div class="row">
+
+        <div class="col-md-6 mb-4">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body text-center">
+
+                    <h3>👤 Patient Report</h3>
+
+                    <p>
+                        Download complete patient details.
+                    </p>
+
+                    <a href="/admin/report/patients"
+                       class="btn btn-primary">
+
+                        Download PDF
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6 mb-4">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body text-center">
+
+                    <h3>👨‍⚕ Doctor Report</h3>
+
+                    <p>
+                        Download doctor information.
+                    </p>
+
+                    <a href="/admin/report/doctors"
+                       class="btn btn-success">
+
+                        Download PDF
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6 mb-4">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body text-center">
+
+                    <h3>📅 Appointment Report</h3>
+
+                    <p>
+                        Download appointment records.
+                    </p>
+
+                    <a href="/admin/report/appointments"
+                       class="btn btn-info text-white">
+
+                        Download PDF
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6 mb-4">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body text-center">
+
+                    <h3>📄 Medical Record Report</h3>
+
+                    <p>
+                        Download all medical records.
+                    </p>
+
+                    <a href="/admin/report/medical_records"
+                       class="btn btn-danger">
+
+                        Download PDF
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

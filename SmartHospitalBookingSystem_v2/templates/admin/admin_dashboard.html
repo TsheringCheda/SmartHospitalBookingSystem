@@ -1,0 +1,449 @@
+{% extends "base.html" %}
+
+{% block title %}
+Admin Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid mt-4">
+
+<div class="card border-0 shadow-lg rounded-4 overflow-hidden mb-5">
+
+<div class="card-body text-white p-5"
+style="background:linear-gradient(135deg,#0d6efd,#198754);">
+
+<div class="row align-items-center">
+
+<div class="col-lg-8">
+
+<h1 class="display-5 fw-bold">
+
+🏥 eHealth Bhutan
+
+</h1>
+
+<p class="lead mb-0">
+
+Administrator Dashboard
+
+</p>
+
+</div>
+
+<div class="col-lg-4 text-end">
+
+<a
+href="/logout"
+class="btn btn-light btn-lg rounded-pill">
+
+<i class="bi bi-box-arrow-right me-2"></i>
+
+Logout
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ===================== -->
+<!-- QUICK ACCESS -->
+<!-- ===================== -->
+
+<h3 class="fw-bold mb-4">
+
+    <i class="bi bi-lightning-charge-fill text-warning me-2"></i>
+
+    Quick Access
+
+</h3>
+
+<div class="row g-4">
+
+    <div class="col-lg-3 col-md-6">
+
+        <a href="/admin/patients" class="text-decoration-none">
+
+            <div class="card border-0 shadow-lg rounded-4 text-white bg-primary h-100">
+
+                <div class="card-body text-center p-4">
+
+                    <i class="bi bi-people-fill display-3"></i>
+
+                    <h4 class="mt-3">Patients</h4>
+
+                </div>
+
+            </div>
+
+        </a>
+
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+
+        <a href="/admin/doctors" class="text-decoration-none">
+
+            <div class="card border-0 shadow-lg rounded-4 text-white bg-success h-100">
+
+                <div class="card-body text-center p-4">
+
+                    <i class="bi bi-person-badge-fill display-3"></i>
+
+                    <h4 class="mt-3">Doctors</h4>
+
+                </div>
+
+            </div>
+
+        </a>
+
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+
+        <a href="/admin/hospitals" class="text-decoration-none">
+
+            <div class="card border-0 shadow-lg rounded-4 text-white bg-danger h-100">
+
+                <div class="card-body text-center p-4">
+
+                    <i class="bi bi-hospital-fill display-3"></i>
+
+                    <h4 class="mt-3">Hospitals</h4>
+
+                </div>
+
+            </div>
+
+        </a>
+
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+
+        <a href="/admin/departments" class="text-decoration-none">
+
+            <div class="card border-0 shadow-lg rounded-4 bg-warning h-100">
+
+                <div class="card-body text-center p-4">
+
+                    <i class="bi bi-diagram-3-fill display-3"></i>
+
+                    <h4 class="mt-3 text-dark">Departments</h4>
+
+                </div>
+
+            </div>
+
+        </a>
+
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+
+        <a href="/admin/appointments" class="text-decoration-none">
+
+            <div class="card border-0 shadow-lg rounded-4 text-white bg-info h-100">
+
+                <div class="card-body text-center p-4">
+
+                    <i class="bi bi-calendar-check-fill display-3"></i>
+
+                    <h4 class="mt-3">Appointments</h4>
+
+                </div>
+
+            </div>
+
+        </a>
+
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+
+        <a href="/admin/medical_records" class="text-decoration-none">
+
+            <div class="card border-0 shadow-lg rounded-4 text-white bg-secondary h-100">
+
+                <div class="card-body text-center p-4">
+
+                    <i class="bi bi-file-earmark-medical-fill display-3"></i>
+
+                    <h4 class="mt-3">Medical Records</h4>
+
+                </div>
+
+            </div>
+
+        </a>
+
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+
+        <a href="/admin/reports" class="text-decoration-none">
+
+            <div class="card border-0 shadow-lg rounded-4 text-white bg-dark h-100">
+
+                <div class="card-body text-center p-4">
+
+                    <i class="bi bi-bar-chart-fill display-3"></i>
+
+                    <h4 class="mt-3">Reports</h4>
+
+                </div>
+
+            </div>
+
+        </a>
+
+    </div>
+
+</div>
+
+<hr class="my-5">
+
+<!-- ===================== -->
+<!-- STATISTICS -->
+<!-- ===================== -->
+
+<h3 class="fw-bold mb-4">
+
+    <i class="bi bi-graph-up-arrow text-primary me-2"></i>
+
+    System Statistics
+
+</h3>
+
+<div class="row g-4">
+
+    <div class="col-lg-3 col-md-6">
+
+        <div class="card border-0 shadow-lg rounded-4">
+
+            <div class="card-body text-center">
+
+                <i class="bi bi-people-fill text-primary display-5"></i>
+
+                <h5 class="mt-3">Patients</h5>
+
+                <h2 class="fw-bold text-primary">{{ total_patients }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+
+        <div class="card border-0 shadow-lg rounded-4">
+
+            <div class="card-body text-center">
+
+                <i class="bi bi-person-badge-fill text-success display-5"></i>
+
+                <h5 class="mt-3">Doctors</h5>
+
+                <h2 class="fw-bold text-success">{{ total_doctors }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+
+        <div class="card border-0 shadow-lg rounded-4">
+
+            <div class="card-body text-center">
+
+                <i class="bi bi-hospital-fill text-danger display-5"></i>
+
+                <h5 class="mt-3">Hospitals</h5>
+
+                <h2 class="fw-bold text-danger">{{ total_hospitals }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+
+        <div class="card border-0 shadow-lg rounded-4">
+
+            <div class="card-body text-center">
+
+                <i class="bi bi-diagram-3-fill text-warning display-5"></i>
+
+                <h5 class="mt-3">Departments</h5>
+
+                <h2 class="fw-bold text-warning">{{ total_departments }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-4">
+
+        <div class="card border-0 shadow-lg rounded-4">
+
+            <div class="card-body text-center">
+
+                <h5>Today's Appointments</h5>
+
+                <h2 class="text-info fw-bold">{{ today }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-4">
+
+        <div class="card border-0 shadow-lg rounded-4">
+
+            <div class="card-body text-center">
+
+                <h5>Completed</h5>
+
+                <h2 class="text-success fw-bold">{{ completed }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-4">
+
+        <div class="card border-0 shadow-lg rounded-4">
+
+            <div class="card-body text-center">
+
+                <h5>Cancelled</h5>
+
+                <h2 class="text-danger fw-bold">{{ cancelled }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<hr class="my-5">
+
+<div class="card border-0 shadow-lg rounded-4">
+
+    <div class="card-header bg-primary text-white">
+
+        <h4>
+
+            <i class="bi bi-bar-chart-fill me-2"></i>
+
+            Monthly Appointment Statistics
+
+        </h4>
+
+    </div>
+
+    <div class="card-body">
+
+        <canvas id="appointmentChart"></canvas>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+const months = {{ months|tojson }};
+const counts = {{ counts|tojson }};
+
+new Chart(document.getElementById("appointmentChart"),{
+
+type:"bar",
+
+data:{
+
+labels:months,
+
+datasets:[{
+
+label:"Appointments",
+
+data:counts,
+
+backgroundColor:"#0d6efd",
+
+borderRadius:10
+
+}]
+
+},
+
+options:{
+
+responsive:true,
+
+plugins:{
+
+legend:{
+
+display:false
+
+}
+
+},
+
+scales:{
+
+y:{
+
+beginAtZero:true
+
+}
+
+}
+
+}
+
+});
+
+</script>
+
+<style>
+
+.card{
+
+transition:.3s;
+
+}
+
+.card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 1rem 2rem rgba(0,0,0,.18)!important;
+
+}
+
+</style>
+
+{% endblock %}

@@ -1,0 +1,411 @@
+{% extends "base.html" %}
+
+{% block title %}
+My Profile
+{% endblock %}
+
+{% block content %}
+
+<section class="py-5">
+
+<div class="container">
+
+<!-- Hero Banner -->
+
+<div class="card border-0 shadow-lg rounded-4 overflow-hidden mb-5">
+
+<div class="card-body text-white p-5"
+style="background: linear-gradient(135deg,#0d6efd,#0a58ca);">
+
+<div class="row align-items-center">
+
+<div class="col-lg-8">
+
+<h1 class="fw-bold display-5">
+
+My Profile
+
+</h1>
+
+<p class="lead mb-0">
+
+View and manage your personal healthcare information.
+
+</p>
+
+</div>
+
+<div class="col-lg-4 text-center d-none d-lg-block">
+
+<i class="bi bi-person-circle"
+style="font-size:90px;"></i>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="row justify-content-center">
+
+<div class="col-lg-10">
+
+<div class="card border-0 shadow-lg rounded-4">
+
+<div class="card-body p-5">
+
+<!-- Profile Header -->
+
+<div class="text-center mb-5">
+
+<div
+class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center shadow"
+style="width:120px;height:120px;">
+
+<i class="bi bi-person-fill display-3"></i>
+
+</div>
+
+<h2 class="fw-bold mt-4">
+
+{{ patient[1] }} {{ patient[2] }}
+
+</h2>
+
+<p class="text-muted">
+
+Patient Portal
+
+</p>
+
+</div>
+
+<hr class="mb-5">
+
+<!-- Personal Information -->
+
+<h3 class="fw-bold mb-4">
+
+Personal Information
+
+</h3>
+
+<div class="row g-4">
+
+    <div class="col-md-6">
+
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+
+            <div class="card-body">
+
+                <i class="bi bi-credit-card-2-front-fill text-primary fs-3"></i>
+
+                <h6 class="text-muted mt-3">
+
+                    CID Number
+
+                </h6>
+
+                <h5 class="fw-bold">
+
+                    {{ patient[0] }}
+
+                </h5>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+
+            <div class="card-body">
+
+                <i class="bi bi-gender-ambiguous text-success fs-3"></i>
+
+                <h6 class="text-muted mt-3">
+
+                    Gender
+
+                </h6>
+
+                <h5 class="fw-bold">
+
+                    {{ patient[3] }}
+
+                </h5>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+
+            <div class="card-body">
+
+                <i class="bi bi-calendar-event-fill text-danger fs-3"></i>
+
+                <h6 class="text-muted mt-3">
+
+                    Date of Birth
+
+                </h6>
+
+                <h5 class="fw-bold">
+
+                    {{ patient[4] }}
+
+                </h5>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+
+            <div class="card-body">
+
+                <i class="bi bi-droplet-fill text-danger fs-3"></i>
+
+                <h6 class="text-muted mt-3">
+
+                    Blood Group
+
+                </h6>
+
+                <h5 class="fw-bold">
+
+                    {{ patient[5] }}
+
+                </h5>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+
+            <div class="card-body">
+
+                <i class="bi bi-globe-central-south-asia text-info fs-3"></i>
+
+                <h6 class="text-muted mt-3">
+
+                    Nationality
+
+                </h6>
+
+                <h5 class="fw-bold">
+
+                    {{ patient[6] }}
+
+                </h5>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+
+            <div class="card-body">
+
+                <i class="bi bi-envelope-fill text-warning fs-3"></i>
+
+                <h6 class="text-muted mt-3">
+
+                    Email
+
+                </h6>
+
+                <h5 class="fw-bold">
+
+                    {{ patient[8] }}
+
+                </h5>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+
+            <div class="card-body">
+
+                <i class="bi bi-telephone-fill text-success fs-3"></i>
+
+                <h6 class="text-muted mt-3">
+
+                    Phone Number
+
+                </h6>
+
+                <h5 class="fw-bold">
+
+                    {{ patient[7] }}
+
+                </h5>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+
+            <div class="card-body">
+
+                <i class="bi bi-geo-alt-fill text-primary fs-3"></i>
+
+                <h6 class="text-muted mt-3">
+
+                    Address
+
+                </h6>
+
+                <h5 class="fw-bold">
+
+                    {{ patient[9] }}, {{ patient[10] }}, {{ patient[11] }}
+
+                </h5>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<hr class="my-5">
+
+<!-- Emergency Contact -->
+
+<h3 class="fw-bold mb-4">
+
+Emergency Contact
+
+</h3>
+
+<div class="card border-0 shadow-sm rounded-4 mb-5">
+
+    <div class="card-body">
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <i class="bi bi-person-heart text-danger fs-3"></i>
+
+                <h6 class="text-muted mt-3">
+
+                    Contact Person
+
+                </h6>
+
+                <h5 class="fw-bold">
+
+                    {{ patient[12] }}
+
+                </h5>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <i class="bi bi-telephone-forward-fill text-success fs-3"></i>
+
+                <h6 class="text-muted mt-3">
+
+                    Contact Number
+
+                </h6>
+
+                <h5 class="fw-bold">
+
+                    {{ patient[13] }}
+
+                </h5>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Action Buttons -->
+
+<div class="d-flex justify-content-center flex-wrap gap-3">
+
+    <a
+        href="/patient/edit_profile"
+        class="btn btn-primary btn-lg rounded-pill px-5">
+
+        <i class="bi bi-pencil-square me-2"></i>
+
+        Edit Profile
+
+    </a>
+
+    <a
+        href="/patient/change_password"
+        class="btn btn-outline-warning btn-lg rounded-pill px-5">
+
+        <i class="bi bi-key-fill me-2"></i>
+
+        Change Password
+
+    </a>
+
+    <a
+        href="/patient/dashboard"
+        class="btn btn-outline-secondary btn-lg rounded-pill px-5">
+
+        <i class="bi bi-house-fill me-2"></i>
+
+        Dashboard
+
+    </a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+{% endblock %}

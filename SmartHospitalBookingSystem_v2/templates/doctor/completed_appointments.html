@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+
+{% block title %}
+Completed Appointments
+{% endblock %}
+
+{% block content %}
+
+<section class="py-5">
+
+<div class="container">
+
+    <!-- Hero -->
+
+    <div class="card border-0 shadow-lg rounded-4 overflow-hidden mb-5">
+
+        <div class="card-body text-white p-5"
+             style="background:linear-gradient(135deg,#0d6efd,#084298);">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-8">
+
+                    <h1 class="display-5 fw-bold">
+
+                        Completed Appointments
+
+                    </h1>
+
+                    <p class="lead mb-0">
+
+                        View all completed consultations.
+
+                    </p>
+
+                </div>
+
+                <div class="col-lg-4 text-center d-none d-lg-block">
+
+                    <i class="bi bi-check2-circle"
+                       style="font-size:90px;"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card border-0 shadow-lg rounded-4">
+
+        <div class="card-body">
+
+            {% if appointments %}
+
+            <div class="table-responsive">
+
+                <table class="table table-hover align-middle">
+
+                    <thead class="table-primary">
+
+                        <tr>
+
+                            <th>ID</th>
+                            <th>Patient</th>
+                            <th>Department</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Type</th>
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for a in appointments %}
+
+                        <tr>
+
+                            <td class="fw-bold">{{ a[0] }}</td>
+
+                            <td>
+
+                                <i class="bi bi-person-circle text-primary me-2"></i>
+
+                                <strong>{{ a[1] }}</strong>
+
+                            </td>
+
+                            <td>
+
+                                <span class="badge bg-info">
+
+                                    {{ a[2] }}
+
+                                </span>
+
+                            </td>
+
+                            <td>{{ a[3] }}</td>
+
+                            <td>{{ a[4] }}</td>
+
+                            <td>{{ a[5] }}</td>
+
+                            <td>
+
+                                <span class="badge bg-primary">
+
+                                    <i class="bi bi-check-circle-fill me-1"></i>
+
+                                    Completed
+
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            {% else %}
+
+            <div class="alert alert-info text-center rounded-4">
+
+                <h4>
+
+                    <i class="bi bi-info-circle-fill me-2"></i>
+
+                    No Completed Appointments
+
+                </h4>
+
+                <p class="mb-0">
+
+                    No completed consultations available.
+
+                </p>
+
+            </div>
+
+            {% endif %}
+
+            <div class="mt-4">
+
+                <a
+                    href="/doctor/dashboard"
+                    class="btn btn-secondary rounded-pill px-4">
+
+                    <i class="bi bi-arrow-left me-2"></i>
+
+                    Back Dashboard
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<style>
+
+.table tbody tr{
+
+transition:.25s;
+
+}
+
+.table tbody tr:hover{
+
+background:#f8f9fa;
+
+transform:scale(1.01);
+
+}
+
+</style>
+
+{% endblock %}

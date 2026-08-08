@@ -1,0 +1,276 @@
+{% extends "base.html" %}
+
+{% block title %}
+Add Doctor
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="card shadow-lg border-0 rounded-4">
+
+        <div class="card-header bg-success text-white">
+            <h3 class="mb-0">
+                👨‍⚕️ Add New Doctor
+            </h3>
+        </div>
+
+        <div class="card-body p-4">
+
+            <form method="POST">
+
+                <div class="row">
+
+                    <!-- Hospital -->
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Hospital
+                        </label>
+
+                        <select
+                            id="hospital"
+                            name="hospital_id"
+                            class="form-select"
+                            required>
+
+                            <option value="">
+                                Select Hospital
+                            </option>
+
+                            {% for h in hospitals %}
+
+                            <option value="{{ h[0] }}">
+                                {{ h[1] }}
+                            </option>
+
+                            {% endfor %}
+
+                        </select>
+
+                    </div>
+
+                    <!-- Department -->
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Department
+                        </label>
+
+                        <select
+                            id="department"
+                            name="department_id"
+                            class="form-select"
+                            required>
+
+                            <option value="">
+                                Select Department
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <!-- Doctor Name -->
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Doctor Name
+                        </label>
+
+                        <input
+                            type="text"
+                            name="doctor_name"
+                            class="form-control"
+                            required>
+
+                    </div>
+
+                    <!-- Gender -->
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Gender
+                        </label>
+
+                        <select
+                            name="gender"
+                            class="form-select"
+                            required>
+
+                            <option value="Male">
+                                Male
+                            </option>
+
+                            <option value="Female">
+                                Female
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <!-- Qualification -->
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Qualification
+                        </label>
+
+                        <input
+                            type="text"
+                            name="qualification"
+                            class="form-control">
+
+                    </div>
+
+                    <!-- Specialization -->
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Specialization
+                        </label>
+
+                        <input
+                            type="text"
+                            name="specialization"
+                            class="form-control">
+
+                    </div>
+
+                    <!-- Experience -->
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Experience (Years)
+                        </label>
+
+                        <input
+                            type="number"
+                            name="experience"
+                            class="form-control">
+
+                    </div>
+
+                    <!-- License -->
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            License Number
+                        </label>
+
+                        <input
+                            type="text"
+                            name="license_no"
+                            class="form-control">
+
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Phone
+                        </label>
+
+                        <input
+                            type="text"
+                            name="phone"
+                            class="form-control">
+
+                    </div>
+
+                    <!-- Email -->
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            name="email"
+                            class="form-control">
+
+                    </div>
+
+                    <!-- Password -->
+                    <div class="col-md-6 mb-4">
+
+                        <label class="form-label">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            name="password"
+                            class="form-control"
+                            required>
+
+                    </div>
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="btn btn-success">
+
+                    💾 Save Doctor
+
+                </button>
+
+                <a
+                    href="/admin/doctors"
+                    class="btn btn-secondary">
+
+                    Cancel
+
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const hospital = document.getElementById("hospital");
+
+hospital.addEventListener("change", function () {
+
+    const hospitalId = this.value;
+
+    const department = document.getElementById("department");
+
+    department.innerHTML =
+        "<option>Loading...</option>";
+
+    fetch("/get_departments/" + hospitalId)
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        department.innerHTML =
+            '<option value="">Select Department</option>';
+
+        data.forEach(function(item){
+
+            department.innerHTML +=
+            `<option value="${item.id}">
+                ${item.name}
+            </option>`;
+
+        });
+
+    });
+
+});
+
+</script>
+
+{% endblock %}

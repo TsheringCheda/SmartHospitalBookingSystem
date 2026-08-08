@@ -1,0 +1,206 @@
+{% extends "base.html" %}
+
+{% block title %}
+Doctor Login
+{% endblock %}
+
+{% block content %}
+
+<section class="login-section">
+
+<div class="container">
+
+<div class="row justify-content-center align-items-center min-vh-100">
+
+<!-- Left Side -->
+
+<div class="col-lg-6 d-none d-lg-block"
+data-aos="fade-right">
+
+<div class="text-center">
+
+<img
+src="{{ url_for('static', filename='images/doctor.png') }}"
+class="img-fluid"
+style="max-height:500px;">
+
+<h2 class="text-white fw-bold mt-4">
+
+Doctor Portal
+
+</h2>
+
+<p class="text-light">
+
+Secure access to appointments, schedules and patient records.
+
+</p>
+
+</div>
+
+</div>
+
+<!-- Login Card -->
+
+<div class="col-lg-5 col-md-8"
+data-aos="fade-left">
+
+<div class="card border-0 shadow-lg rounded-4">
+
+<div class="card-body p-5">
+
+<div class="text-center mb-4">
+
+<div
+class="rounded-circle bg-success text-white d-inline-flex align-items-center justify-content-center"
+style="width:90px;height:90px;">
+
+<i class="bi bi-heart-pulse-fill fs-1"></i>
+
+</div>
+
+<h2 class="fw-bold mt-3">
+
+Doctor Login
+
+</h2>
+
+<p class="text-muted">
+
+Sign in to continue
+
+</p>
+
+</div>
+
+<form action="/doctor/login" method="POST">
+
+    <!-- Email -->
+
+    <div class="mb-4">
+
+        <label class="form-label">
+
+            Email Address
+
+        </label>
+
+        <div class="input-group">
+
+            <span class="input-group-text">
+
+                <i class="bi bi-envelope-fill"></i>
+
+            </span>
+
+            <input
+
+                type="email"
+
+                name="email"
+
+                class="form-control"
+
+                placeholder="Enter your email"
+
+                required>
+
+        </div>
+
+    </div>
+
+    <!-- Password -->
+
+    <div class="mb-4">
+
+        <label class="form-label">
+
+            Password
+
+        </label>
+
+        <div class="input-group">
+
+            <span class="input-group-text">
+
+                <i class="bi bi-lock-fill"></i>
+
+            </span>
+
+            <input
+
+                type="password"
+
+                name="password"
+
+                class="form-control"
+
+                placeholder="Enter your password"
+
+                required>
+
+        </div>
+
+    </div>
+
+    <!-- Remember -->
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div class="form-check">
+
+            <input
+
+                class="form-check-input"
+
+                type="checkbox"
+
+                id="rememberDoctor">
+
+            <label
+
+                class="form-check-label"
+
+                for="rememberDoctor">
+
+                Remember Me
+
+            </label>
+
+        </div>
+
+    </div>
+
+    <!-- Button -->
+
+    <div class="d-grid">
+
+        <button
+
+            type="submit"
+
+            class="btn btn-success btn-lg rounded-pill">
+
+            <i class="bi bi-box-arrow-in-right me-2"></i>
+
+            Login Securely
+
+        </button>
+
+    </div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block title %}
+Patient Details
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+<div class="card shadow-lg">
+
+<div class="card-header bg-success text-white">
+
+<h3>Patient Details</h3>
+
+</div>
+
+<div class="card-body">
+
+<table class="table table-bordered">
+
+<tr>
+    <th>Appointment ID</th>
+    <td>{{ appointment[0] }}</td>
+</tr>
+
+<tr>
+    <th>Patient Name</th>
+    <td>{{ appointment[1] }}</td>
+</tr>
+
+<tr>
+    <th>Gender</th>
+    <td>{{ appointment[2] }}</td>
+</tr>
+
+<tr>
+    <th>Date of Birth</th>
+    <td>{{ appointment[3] }}</td>
+</tr>
+
+<tr>
+    <th>CID Number</th>
+    <td>{{ appointment[4] }}</td>
+</tr>
+
+<tr>
+    <th>Phone</th>
+    <td>{{ appointment[5] }}</td>
+</tr>
+
+<tr>
+    <th>Email</th>
+    <td>{{ appointment[6] }}</td>
+</tr>
+
+<tr>
+    <th>Blood Group</th>
+    <td>{{ appointment[7] }}</td>
+</tr>
+
+<tr>
+    <th>Nationality</th>
+    <td>{{ appointment[8] }}</td>
+</tr>
+
+<tr>
+    <th>Address</th>
+    <td>{{ appointment[9] }}</td>
+</tr>
+
+<tr>
+    <th>Hospital</th>
+    <td>{{ appointment[10] }}</td>
+</tr>
+
+<tr>
+    <th>Department</th>
+    <td>{{ appointment[11] }}</td>
+</tr>
+
+<tr>
+    <th>Doctor</th>
+    <td>{{ appointment[12] }}</td>
+</tr>
+
+<tr>
+    <th>Appointment Date</th>
+    <td>{{ appointment[13] }}</td>
+</tr>
+
+<tr>
+    <th>Appointment Time</th>
+    <td>{{ appointment[14] }}</td>
+</tr>
+
+<tr>
+    <th>Appointment Type</th>
+    <td>{{ appointment[15] }}</td>
+</tr>
+
+<tr>
+    <th>Status</th>
+    <td>{{ appointment[16] }}</td>
+</tr>
+
+</table>
+
+<hr>
+
+<div class="text-center">
+
+<a href="/doctor/complete/{{ appointment[0] }}"
+class="btn btn-success">
+
+✔ Complete Appointment
+
+</a>
+
+<a href="/doctor/cancel/{{ appointment[0] }}"
+class="btn btn-danger">
+
+✖ Cancel Appointment
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,302 @@
+{% extends "base.html" %}
+
+{% block title %}
+Appointment Management
+{% endblock %}
+
+{% block content %}
+
+<section class="py-5">
+
+<div class="container-fluid">
+
+<!-- Hero Banner -->
+
+<div class="card border-0 shadow-lg rounded-4 overflow-hidden mb-5">
+
+<div class="card-body text-white p-5"
+style="background:linear-gradient(135deg,#0dcaf0,#0d6efd);">
+
+<div class="row align-items-center">
+
+<div class="col-lg-8">
+
+<h1 class="display-5 fw-bold">
+
+📅 Appointment Management
+
+</h1>
+
+<p class="lead mb-0">
+
+Monitor and manage all patient appointments.
+
+</p>
+
+</div>
+
+<div class="col-lg-4 text-end d-none d-lg-block">
+
+<i class="bi bi-calendar-check-fill"
+style="font-size:90px;"></i>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Search -->
+
+<div class="card border-0 shadow-lg rounded-4 mb-4">
+
+<div class="card-body">
+
+<form method="GET">
+
+<div class="input-group">
+
+<span class="input-group-text">
+
+<i class="bi bi-search"></i>
+
+</span>
+
+<input
+type="text"
+class="form-control"
+name="search"
+placeholder="Search Patient / Doctor / Status..."
+value="{{ search }}">
+
+<button class="btn btn-primary">
+
+Search
+
+</button>
+
+<a href="/admin/appointments"
+class="btn btn-secondary">
+
+Reset
+
+</a>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+<!-- Table -->
+
+<div class="card border-0 shadow-lg rounded-4">
+
+<div class="card-header bg-info text-white">
+
+<h4 class="mb-0">
+
+<i class="bi bi-calendar2-check-fill me-2"></i>
+
+All Appointments
+
+</h4>
+
+</div>
+
+<div class="card-body">
+
+<div class="table-responsive">
+
+<table class="table table-hover align-middle">
+
+<thead class="table-dark">
+
+<tr>
+
+<th>ID</th>
+
+<th>Patient</th>
+
+<th>Doctor</th>
+
+<th>Hospital</th>
+
+<th>Date</th>
+
+<th>Time</th>
+
+<th>Status</th>
+
+<th class="text-center">
+
+Action
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% if appointments %}
+
+{% for a in appointments %}
+
+<tr>
+
+<td>{{ a[0] }}</td>
+
+<td class="fw-semibold">
+
+{{ a[1] }}
+
+</td>
+
+<td>
+
+{{ a[2] }}
+
+</td>
+
+<td>
+
+{{ a[3] }}
+
+</td>
+
+<td>
+
+{{ a[4] }}
+
+</td>
+
+<td>
+
+{{ a[5] }}
+
+</td>
+
+<td>
+
+{% if a[6]=="Booked" %}
+
+<span class="badge bg-warning text-dark">
+
+Booked
+
+</span>
+
+{% elif a[6]=="Confirmed" %}
+
+<span class="badge bg-primary">
+
+Confirmed
+
+</span>
+
+{% elif a[6]=="Completed" %}
+
+<span class="badge bg-success">
+
+Completed
+
+</span>
+
+{% elif a[6]=="Cancelled" %}
+
+<span class="badge bg-danger">
+
+Cancelled
+
+</span>
+
+{% else %}
+
+<span class="badge bg-secondary">
+
+{{ a[6] }}
+
+</span>
+
+{% endif %}
+
+</td>
+
+<td class="text-center">
+
+<a
+href="/admin/view_appointment/{{ a[0] }}"
+class="btn btn-primary btn-sm rounded-pill">
+
+<i class="bi bi-eye-fill"></i>
+
+View
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+{% else %}
+
+<tr>
+
+<td colspan="8" class="text-center py-5">
+
+<h5 class="text-danger">
+
+No Appointments Found
+
+</h5>
+
+</td>
+
+</tr>
+
+{% endif %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<style>
+
+.card{
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 1rem 2rem rgba(0,0,0,.15)!important;
+}
+
+.table tbody tr{
+transition:.25s;
+}
+
+.table tbody tr:hover{
+background:#f8f9fa;
+}
+
+</style>
+
+{% endblock %}

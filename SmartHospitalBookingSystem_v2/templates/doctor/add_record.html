@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}
+Add Medical Record
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+<div class="card shadow">
+
+<div class="card-header bg-success text-white">
+
+<h3>Add Medical Record</h3>
+
+</div>
+
+<div class="card-body">
+
+<form method="POST" action="/doctor/save_record">
+
+<input
+type="hidden"
+name="appointment_id"
+value="{{ appointment[0] }}">
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Patient
+
+</label>
+
+<input
+type="text"
+class="form-control"
+value="{{ appointment[1] }}"
+readonly>
+
+</div>
+
+<div class="mb-3">
+
+<label>Diagnosis</label>
+
+<textarea
+class="form-control"
+name="diagnosis"
+rows="4"
+required></textarea>
+
+</div>
+
+<div class="mb-3">
+
+<label>Prescription</label>
+
+<textarea
+class="form-control"
+name="prescription"
+rows="4"
+required></textarea>
+
+</div>
+
+<div class="mb-3">
+
+<label>Doctor Notes</label>
+
+<textarea
+class="form-control"
+name="doctor_notes"
+rows="4"></textarea>
+
+</div>
+
+<button
+class="btn btn-success">
+
+Save Medical Record
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

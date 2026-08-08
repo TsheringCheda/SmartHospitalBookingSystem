@@ -1,0 +1,415 @@
+{% extends "base.html" %}
+
+{% block title %}
+Book Appointment
+{% endblock %}
+
+{% block content %}
+
+<section class="py-5">
+
+<div class="container">
+
+<!-- Hero Banner -->
+
+<div class="card border-0 shadow-lg rounded-4 overflow-hidden mb-5">
+
+<div class="card-body p-5 text-white"
+
+style="background: linear-gradient(135deg,#0d6efd,#0a58ca);">
+
+<div class="row align-items-center">
+
+<div class="col-lg-8">
+
+<h1 class="fw-bold display-6">
+
+Book Your Appointment
+
+</h1>
+
+<p class="lead mb-0">
+
+Choose your hospital, department, doctor and schedule your visit in just a few simple steps.
+
+</p>
+
+</div>
+
+<div class="col-lg-4 text-center d-none d-lg-block">
+
+<i class="bi bi-calendar2-check-fill"
+
+style="font-size:90px;"></i>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Appointment Card -->
+
+<div class="row justify-content-center">
+
+<div class="col-lg-10">
+
+<div class="card border-0 shadow-lg rounded-4">
+
+<div class="card-body p-5">
+
+<h3 class="fw-bold mb-4">
+
+Appointment Details
+
+</h3>
+
+<form action="/patient/book"
+
+method="POST">
+
+<!-- Hospital -->
+
+<div class="mb-4">
+
+<label class="form-label fw-semibold">
+
+<i class="bi bi-hospital me-2 text-primary"></i>
+
+Hospital
+
+</label>
+
+<select
+
+id="hospital"
+
+class="form-select form-select-lg"
+
+name="hospital_id"
+
+required>
+
+<option value="">
+
+Choose Hospital
+
+</option>
+
+{% for hospital in hospitals %}
+
+<option value="{{ hospital[0] }}">
+
+{{ hospital[1] }}
+
+</option>
+
+{% endfor %}
+
+</select>
+
+</div>
+
+<!-- Department -->
+
+<div class="mb-4">
+
+<label class="form-label fw-semibold">
+
+<i class="bi bi-building me-2 text-success"></i>
+
+Department
+
+</label>
+
+<select
+
+id="department"
+
+class="form-select form-select-lg"
+
+name="department_id"
+
+required>
+
+<option value="">
+
+Choose Department
+
+</option>
+
+</select>
+
+</div>
+
+<!-- Doctor -->
+
+<div class="mb-4">
+
+<label class="form-label fw-semibold">
+
+<i class="bi bi-person-badge-fill me-2 text-danger"></i>
+
+Doctor
+
+</label>
+
+<select
+
+id="doctor"
+
+class="form-select form-select-lg"
+
+name="doctor_id"
+
+required>
+
+<option value="">
+
+Choose Doctor
+
+</option>
+
+</select>
+
+</div>
+
+<!-- Schedule -->
+
+<div class="mb-4">
+
+    <label class="form-label fw-semibold">
+
+        <i class="bi bi-clock-history me-2 text-warning"></i>
+
+        Available Schedule
+
+    </label>
+
+    <select
+
+        id="schedule"
+
+        name="schedule_id"
+
+        class="form-select form-select-lg"
+
+        required>
+
+        <option value="">
+
+            Select Schedule
+
+        </option>
+
+    </select>
+
+</div>
+
+<!-- Appointment Type -->
+
+<div class="mb-4">
+
+    <label class="form-label fw-semibold">
+
+        <i class="bi bi-clipboard2-pulse-fill me-2 text-info"></i>
+
+        Appointment Type
+
+    </label>
+
+    <select
+
+        class="form-select form-select-lg"
+
+        name="appointment_type"
+
+        required>
+
+        <option value="New Patient">
+
+            New Patient
+
+        </option>
+
+        <option value="Follow-up">
+
+            Follow-up
+
+        </option>
+
+        <option value="Emergency">
+
+            Emergency
+
+        </option>
+
+    </select>
+
+</div>
+
+<hr class="my-4">
+
+<div class="d-grid">
+
+    <button
+
+        type="submit"
+
+        class="btn btn-primary btn-lg rounded-pill py-3 fw-bold shadow">
+
+        <i class="bi bi-arrow-right-circle-fill me-2"></i>
+
+        Continue Booking
+
+    </button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+// ================= Hospital → Department =================
+
+function loadDepartments(){
+
+    let hospital_id = document.getElementById("hospital").value;
+
+    let department = document.getElementById("department");
+    let doctor = document.getElementById("doctor");
+    let schedule = document.getElementById("schedule");
+
+    department.innerHTML =
+        "<option value=''>Choose Department</option>";
+
+    doctor.innerHTML =
+        "<option value=''>Choose Doctor</option>";
+
+    schedule.innerHTML =
+        "<option value=''>Select Schedule</option>";
+
+    if(hospital_id==""){
+        return;
+    }
+
+    fetch("/get_departments/" + hospital_id)
+
+    .then(response => response.json())
+
+    .then(data=>{
+
+        data.forEach(function(item){
+
+            department.innerHTML +=
+            `<option value="${item.id}">
+                ${item.name}
+            </option>`;
+
+        });
+
+    });
+
+}
+
+// ================= Department → Doctor =================
+
+function loadDoctors(){
+
+    let department_id = document.getElementById("department").value;
+
+    let doctor = document.getElementById("doctor");
+    let schedule = document.getElementById("schedule");
+
+    doctor.innerHTML =
+        "<option value=''>Choose Doctor</option>";
+
+    schedule.innerHTML =
+        "<option value=''>Select Schedule</option>";
+
+    if(department_id==""){
+        return;
+    }
+
+    fetch("/get_doctors/" + department_id)
+
+    .then(response => response.json())
+
+    .then(data=>{
+
+        data.forEach(function(item){
+
+            doctor.innerHTML +=
+            `<option value="${item.id}">
+                ${item.name}
+            </option>`;
+
+        });
+
+    });
+
+}
+
+// ================= Doctor → Schedule =================
+
+function loadSchedules(){
+
+    let doctor_id = document.getElementById("doctor").value;
+
+    let schedule = document.getElementById("schedule");
+
+    schedule.innerHTML =
+        "<option value=''>Select Schedule</option>";
+
+    if(doctor_id==""){
+        return;
+    }
+
+    fetch("/get_schedules/" + doctor_id)
+
+    .then(response => response.json())
+
+    .then(data=>{
+
+        data.forEach(function(s){
+
+            schedule.innerHTML +=
+            `<option value="${s.id}">
+                ${s.date} | ${s.start} - ${s.end} | Tokens Left : ${s.tokens}
+            </option>`;
+
+        });
+
+    });
+
+}
+
+// ================= Events =================
+
+document
+.getElementById("hospital")
+.addEventListener("change", loadDepartments);
+
+document
+.getElementById("department")
+.addEventListener("change", loadDoctors);
+
+document
+.getElementById("doctor")
+.addEventListener("change", loadSchedules);
+
+</script>
+
+{% endblock %}
